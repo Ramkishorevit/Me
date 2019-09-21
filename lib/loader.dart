@@ -1,55 +1,89 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-void main() => runApp(Loader());
-
-class Loader extends StatefulWidget with TickerProviderStateMixin {
+class Loader extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return null;
-  }
+  LoaderAnimationWidgetState createState() => LoaderAnimationWidgetState();
+}
+
+class LoaderAnimationWidgetState extends State<Loader>
+    with TickerProviderStateMixin {
+
+  AnimationController _controller;
+  Animation _animation;
+  bool appState = false;
+  double width;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
-  }
-
-  @override
-  // TODO: implement context
-  BuildContext get context => null;
-
-  @override
-  void deactivate() {
-    // TODO: implement deactivate
-  }
-
-  @override
-  void didUpdateWidget(StatefulWidget oldWidget) {
-    // TODO: implement didUpdateWidget
+    width = MediaQuery.of(context).size.width;
+    _controller.forward();
+    if(!appState) {
+      return _triggerLoader;
+    }
+    return _loadView;
   }
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
+
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    ))..addStatusListener(handler);
+  }
+
+  void handler(status) {
+    if (status == AnimationStatus.completed) {
+      _animation.removeStatusListener(handler);
+      _controller.reset();
+      _animation = Tween(begin: 0.0, end: 11.0).animate(CurvedAnimation(
+        parent: _controller,
+        curve: Curves.fastOutSlowIn,
+      ))..addStatusListener((status) {
+          if (status == AnimationStatus.completed) {
+            setState(() {
+              appState = true;
+            });
+          }
+        });
+      _controller.forward();
+    }
   }
 
   @override
-  // TODO: implement mounted
-  bool get mounted => null;
-
-  @override
-  void reassemble() {
-    // TODO: implement reassemble
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
-  @override
-  void setState(fn) {
-    // TODO: implement setState
+  Widget get _loadView {
+    return Scaffold(
+        body: Center(
+          child: Text('Hello World'),
+        ),
+      );
   }
 
-  @override
-  // TODO: implement widget
-  StatefulWidget get widget => null;
-
+  Widget get _triggerLoader {
+    return AnimatedBuilder(
+        animation: _controller,
+        builder: (BuildContext context, Widget child) {
+          return Scaffold(
+              body:  Transform(
+                transform:
+                Matrix4.translationValues(_animation.value * width, 0.0, 0.0),
+                child: new Center(
+                    child: Container(
+                      width: 200.0,
+                      height: 200.0,
+                      color: Colors.blue,
+                    )),
+              )
+          );
+        });
+  }
 }
