@@ -107,7 +107,7 @@ class LoaderAnimationWidgetState extends State<Loader>
                 Matrix4.translationValues(_animation.value * width, 0.0, 0.0),
                 child: new Center(
                     child: CircularProgressIndicator(
-                      strokeWidth: 50,
+                      strokeWidth: 80,
                     )),
               )
           );
