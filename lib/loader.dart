@@ -72,6 +72,7 @@ class LoaderAnimationWidgetState extends State<Loader>
     items.add(MessageItem(Strings.hacks));
 
     return Scaffold(
+      appBar: PreferredSize(child: Image.network("https://angel.co/cdn-cgi/image/width=100,height=100,format=auto,fit=cover/https://d1qb2nb5cznatu.cloudfront.net/users/5219786-original?1495027422") ),
       body: ListView.builder(
         // Let the ListView know how many items it needs to build.
         itemCount: items.length,
@@ -138,4 +139,3 @@ class Strings {
   static const String certificationAndTalks = "I am a Google certified Android Developer and I have given a tech talk on Picasso 3 sat up ! @ BLR-Droid and BLR Kotlin User Group meetup";
   static const String hacks = "I have participated and won a lot of interesting hackathons from Goethe german coding culture hackathon to TCS digital Hackathon'16. Most recently we came second in Practo sandbox '17 hack. Check out our blog on how we built this project.";
 }
-
