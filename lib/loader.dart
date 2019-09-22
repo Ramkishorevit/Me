@@ -29,7 +29,7 @@ class LoaderAnimationWidgetState extends State<Loader>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
     _animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.fastOutSlowIn,
@@ -66,14 +66,13 @@ class LoaderAnimationWidgetState extends State<Loader>
     items.add(MessageItem(Strings.workDescription));
     items.add(HeadingItem("Community"));
     items.add(MessageItem(Strings.communityDescription));
-    items.add(HeadingItem("Blogs"));
+    items.add(HeadingItem("Talks"));
+    items.add(MessageItem(Strings.certificationAndTalks));
     items.add(HeadingItem("Hackathon"));
     items.add(MessageItem(Strings.hacks));
 
     return Scaffold(
-      body: Image(),
-
-      ListView.builder(
+      body: ListView.builder(
         // Let the ListView know how many items it needs to build.
         itemCount: items.length,
         // Provide a builder function. This is where the magic happens.
@@ -94,7 +93,7 @@ class LoaderAnimationWidgetState extends State<Loader>
             );
           }
         },
-      ),
+      )
     );
   }
 
@@ -108,6 +107,7 @@ class LoaderAnimationWidgetState extends State<Loader>
                 Matrix4.translationValues(_animation.value * width, 0.0, 0.0),
                 child: new Center(
                     child: CircularProgressIndicator(
+                      strokeWidth: 50,
                     )),
               )
           );
@@ -135,7 +135,8 @@ class MessageItem implements ListItem {
 class Strings {
   static const String workDescription = "I work at Poynt as an Android Engineer (POS and Payments Platform). Previously I have worked and interned with Paytm (India's one of the biggest E-Commerce Payments Unicorn startup), Practo (One of the biggest Healthcare startup in India).";
   static const String communityDescription = "I was part of some of the open source non profit communities like Google Developers Group (GDG VIT), Node School, I also used to contribute to Picasso (Powerful image caaching and loading library) and Zulip (A powerful open source team chat) android app.";
-  static const String blogInfo = "Check out my medium profile.";
+  static const String certificationAndTalks = "I am a Google certified Android Developer \n"
+      "I have given a tech talk on Picasso 3 sat up ! @ BLR-Droid and BLR Kotlin User Group meetup";
   static const String hacks = "I have participated and won a lot of interesting hackathons from Goethe german coding culture hackathon to TCS digital Hackathon'16. Most recently we came second in Practo sandbox '17 hack. Check out our blog on how we built this project.";
 }
 
