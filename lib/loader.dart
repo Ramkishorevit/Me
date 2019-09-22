@@ -63,10 +63,13 @@ class LoaderAnimationWidgetState extends State<Loader>
   Widget get _loadView {
     List<ListItem> items = List<ListItem>();
     items.add(HeadingItem("Work"));
-    items.add(MessageItem("Poynt", ""));
+    items.add(MessageItem(Strings.workDescription));
     items.add(HeadingItem("Community"));
+    items.add(MessageItem(Strings.communityDescription));
     items.add(HeadingItem("Blogs"));
+    items.add(MessageItem(Strings.blogInfo));
     items.add(HeadingItem("Hackathon"));
+    items.add(MessageItem(Strings.hacks));
 
     return Scaffold(
       body: ListView.builder(
@@ -124,15 +127,15 @@ class HeadingItem implements ListItem {
 
 // A ListItem that contains data to display a message.
 class MessageItem implements ListItem {
-  final String sender;
   final String body;
 
-  MessageItem(this.sender, this.body);
+  MessageItem(this.body);
 }
 
 class Strings {
   static const String workDescription = "I work at Poynt as an Android Engineer (POS and Payments Platform). Previously I have worked with Paytm (India's one of the biggest E-Commerce Payments Unicorn startup), Practo (One of the biggest Healthcare startup in India).";
   static const String communityDescription = "I was part of some of the open source non profit communities like Google Developers Group (GDG VIT), Node School, I also used to contribute to Picasso (Powerful image caaching and loading library) and Zulip (A powerful open source team chat) android app.";
-
+  static const String blogInfo = "Check out my medium profile.";
+  static const String hacks = " I have participated and won a lot of interesting hackathons from Goethe german coding culture hackathon to TCS digital Hackathon'16. Most recently we came second in Practo sandbox '17 hack. Check out our blog on how we built this project.";
 }
 
