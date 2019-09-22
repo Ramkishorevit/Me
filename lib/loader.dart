@@ -72,7 +72,6 @@ class LoaderAnimationWidgetState extends State<Loader>
     items.add(MessageItem(Strings.hacks));
 
     return Scaffold(
-      appBar: PreferredSize(child: Image.network("https://angel.co/cdn-cgi/image/width=100,height=100,format=auto,fit=cover/https://d1qb2nb5cznatu.cloudfront.net/users/5219786-original?1495027422") ),
       body: ListView.builder(
         // Let the ListView know how many items it needs to build.
         itemCount: items.length,
