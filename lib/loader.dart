@@ -135,8 +135,7 @@ class MessageItem implements ListItem {
 class Strings {
   static const String workDescription = "I work at Poynt as an Android Engineer (POS and Payments Platform). Previously I have worked and interned with Paytm (India's one of the biggest E-Commerce Payments Unicorn startup), Practo (One of the biggest Healthcare startup in India).";
   static const String communityDescription = "I was part of some of the open source non profit communities like Google Developers Group (GDG VIT), Node School, I also used to contribute to Picasso (Powerful image caaching and loading library) and Zulip (A powerful open source team chat) android app.";
-  static const String certificationAndTalks = "I am a Google certified Android Developer \n"
-      "I have given a tech talk on Picasso 3 sat up ! @ BLR-Droid and BLR Kotlin User Group meetup";
+  static const String certificationAndTalks = "I am a Google certified Android Developer and I have given a tech talk on Picasso 3 sat up ! @ BLR-Droid and BLR Kotlin User Group meetup";
   static const String hacks = "I have participated and won a lot of interesting hackathons from Goethe german coding culture hackathon to TCS digital Hackathon'16. Most recently we came second in Practo sandbox '17 hack. Check out our blog on how we built this project.";
 }
 
